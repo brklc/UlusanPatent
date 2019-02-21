@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DenemeIdentitiy.Identity.ApplicationUser>
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="extended">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <table class="table table-responsive-md-md">
+                            <tr class="table-light">
+                                <th>
+                                    Kullanıcı Adı
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdentityNumber)
+                                </th>
+                                <th>
+                                    Telefon No
+                                </th>
+                                <th>
+                                    Üyelik Bitiş Tarihi
+                                </th>
+
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdentityNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EndDate)
+                                    </td>
+                                    <td>
+
+                                        <a href="@Url.Action("Edit","Account", new {id = item.Id })" class="info p-0" data-original-title="" title="">
+                                            <i class="ft-edit font-medium-3 mr-2"></i>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</section>
+

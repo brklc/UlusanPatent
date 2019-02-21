@@ -1,0 +1,44 @@
+﻿@model DenemeIdentitiy.Models.Register
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/RegisterLayout.cshtml";
+}
+
+<h2 class="text-center">Üye Ol</h2>
+<hr />
+@Html.ValidationSummary()
+<div class="col-12 col-sm-12 col-md-12 d-flex align-items-center">
+    <div class="card-block mx-auto">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(i => i.UserName, new { @class = "form-control", @placeholder ="Kullanıcı Adı" })
+            </div>
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(i => i.Email, new { @class = "form-control", @placeholder = "E-Mail" })
+            </div>
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(i => i.CompanyName, new { @class = "form-control", @placeholder = "Şirket Adı" })
+            </div>
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(i => i.IdentityNumber, new { @class = "form-control", @placeholder = "TC Kimlik No" })
+            </div>
+
+            <div class="input-group mb-3">
+                @Html.EnumDropDownListFor(model => model.RegisterEndDate, "Üyelik Tipi Seçiniz.", new { @class = "form-control" })
+            </div>
+
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(i => i.PhoneNumber, new { @class = "form-control", @placeholder = "Telefon No" })
+            </div>
+            <div class="finput-group mb-3">
+                @Html.PasswordFor(i => i.Password, new { @class = "form-control", @placeholder = "Şifre" })
+            </div>
+
+            <button type="submit" class="btn btn-primary"> Kaydet</button>
+        }
+
+    </div>
+</div>
+

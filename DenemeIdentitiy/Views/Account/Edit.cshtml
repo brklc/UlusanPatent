@@ -1,0 +1,64 @@
+﻿@model DenemeIdentitiy.Identity.ApplicationUser
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ValidationSummary()
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+         
+        </div>
+        <div class="card-body">
+            <div class="px-3">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.AntiForgeryToken()
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="userinput1">Kullanıcı Adı</label>
+                                @Html.TextBoxFor(i => i.UserName, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="userinput1">E-Mail</label>
+                                @Html.TextBoxFor(i => i.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="userinput1">Şirket Adı</label>
+                                @Html.TextBoxFor(i => i.CompanyName, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="userinput1">TC Kimlik No</label>
+                                @Html.TextBoxFor(i => i.IdentityNumber, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6 mb-2">
+                                <label for="userinput1">Telefon No</label>
+                                @Html.TextBoxFor(i => i.PhoneNumber, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-6 mb-2">
+                                <label for="userinput1">Üyelik Bitiş Tarihi</label>
+                                @Html.TextBoxFor(i => i.EndDate, new { @class = "form-control"})
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary"> Kaydet</button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

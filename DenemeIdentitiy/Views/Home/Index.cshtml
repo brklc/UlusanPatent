@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                <div class="card gradient-blackberry">
+                    <div class="card-body">
+                        <div class="card-block pt-2 pb-0">
+                            <div class="media">
+                                <div class="media-body white text-left">
+                                    <h3 class="font-large-1 mb-0">@ViewBag.Count </h3>
+                                    <span>Tescil & Etiketler</span>
+                                </div>
+
+                                <div class="media-right white text-right">
+                                    <i class="icon-bag font-large-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Widget-line-chart" class="height-75 WidgetlineChart WidgetlineChartshadow mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                <div class="card gradient-ibiza-sunset">
+                    <div class="card-body">
+                        <div class="card-block pt-2 pb-0">
+                            <div class="media">
+                                <div class="media-body white text-left">
+                                    <h3 class="font-large-1 mb-0">@ViewBag.Registrations</h3>
+                                    <span>Lisans Belgeleri</span>
+                                </div>
+                                <div class="media-right white text-right">
+                                    <i class="icon-folder font-large-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Widget-line-chart1" class="height-75 WidgetlineChart WidgetlineChartshadow mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                <div class="card gradient-green-tea">
+                    <div class="card-body">
+                        <div class="card-block pt-2 pb-0">
+                            <div class="media">
+                                <div class="media-body white text-left">
+                                    <h3 class="font-large-1 mb-0">@ViewBag.UsersCount</h3>
+                                    <span>Kullanıcı</span>
+                                </div>
+                                <div class="media-right white text-right">
+                                    <i class="icon-user font-large-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartshadow mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+    else if (User.IsInRole("User"))
+    {
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                <div class="card gradient-blackberry">
+                    <div class="card-body">
+                        <div class="card-block pt-2 pb-0">
+                            <div class="media">
+                                <div class="media-body white text-left">
+                                    <h3 class="font-large-1 mb-0">@ViewBag.CountUser </h3>
+                                    <span>Tescil & Etiketlerim</span>
+                                </div>
+
+                                <div class="media-right white text-right">
+                                    <i class="icon-folder font-large-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Widget-line-chart" class="height-75 WidgetlineChart WidgetlineChartshadow mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                <div class="card gradient-ibiza-sunset">
+                    <div class="card-body">
+                        <div class="card-block pt-2 pb-0">
+                            <div class="media">
+                                <div class="media-body white text-left">
+                                    <h3 class="font-large-1 mb-0">@ViewBag.RegistrationCount</h3>
+                                    <span>Lisans Belgelerim</span>
+                                </div>
+                                <div class="media-right white text-right">
+                                    <i class="icon-folder font-large-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Widget-line-chart1" class="height-75 WidgetlineChart WidgetlineChartshadow mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+
+
+
+
+@*<h2>Home</h2>
+    <hr />
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        //kullanıcı login olmuşsa bu alanı göster
+        if (User.IsInRole("Admin"))
+        {
+            <h2> Admin Hello world</h2>
+        }
+        else if (User.IsInRole("User"))
+        {
+            <h2>User Hello World</h2>
+        }
+
+
+    }
+    else
+    {
+
+
+    }*@
+

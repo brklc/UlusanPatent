@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DenemeIdentitiy.Models.RegistrationDocument>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+
+<section id="simple-table">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <p>
+                                    <button> @Html.ActionLink("Yeni Kayıt", "Create")</button>
+                                </p>
+                            }
+                        }
+
+                        @if (Model.Count() == 0)
+                        {
+                            <p>Kayıt Bulunamadı...</p>
+                        }
+                        else
+                        {
+                            <table class="table table-responsive-md-md">
+                                <tr class="table-light">
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Compost)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Fertilizer)
+                                    </th>
+                                    <th>
+                                        Şirket Adı
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            <a href="~/upload/@item.Compost" target="_blank">@item.Compost</a>
+                                        </td>
+                                        <td>
+                                            <a href="~/upload/@item.Fertilizer" target="_blank">@item.Fertilizer</a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ApplicationUser.CompanyName)
+                                        </td>
+
+
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            if (User.IsInRole("Admin"))
+                                            {
+                                                <td>
+
+                                                    <a href="@Url.Action("Edit","Registration", new {id = item.Id })" class="info p-0" data-original-title="" title="">
+                                                        <i class="ft-edit font-medium-3 mr-2"></i>
+                                                    </a>
+                                                    <a href="@Url.Action("Delete","Registration", new {id = item.Id })" class="info p-0" data-original-title="" title="">
+                                                        <i class="ft-x font-medium-3 mr-2" style="color:red;"></i>
+                                                    </a>
+                                                </td>
+                                            }
+                                            else
+                                            {
+
+                                            }
+                                        }
+
+
+                                    </tr>
+                                }
+
+                            </table>
+                        }
+
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+

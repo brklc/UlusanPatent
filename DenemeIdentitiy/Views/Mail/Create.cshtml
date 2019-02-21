@@ -1,0 +1,63 @@
+﻿@model DenemeIdentitiy.Models.MailModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success mb-2" role="alert">
+        <strong>@TempData["success"]</strong>
+    </div>
+}
+
+
+<section class="full-editor">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="row">
+                            @using (Html.BeginForm("Create", "Mail", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div class="mx-auto col-md-8">
+                                    <div id="full-wrapper">
+                                        <div id="full-container">
+
+                                            <div class="editor">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.TextAreaFor(model => model.Message, new { @id = "FullDescription" })
+                                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                                    <script>
+                                                        CKEDITOR.replace("FullDescription");
+                                                    </script>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions left">
+                                        <input type="submit" value="Gönder" class="btn btn-raised btn-primary" />
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
